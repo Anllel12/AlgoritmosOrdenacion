@@ -6,7 +6,7 @@ import java.util.Arrays;
  *
  * @author Jorge Cisneros
  */
-public class AlgoritmosOrdenacion {
+public class AlgoritmoBurbuja {
 
     
     int [] lista1 = {13, 27, 455, 621, 23, 1, 15}; 
@@ -33,7 +33,7 @@ public class AlgoritmosOrdenacion {
      */
     public static void main(String[] args) {
         
-        AlgoritmosOrdenacion ordenacion =new AlgoritmosOrdenacion();
+        AlgoritmoBurbuja ordenacion =new AlgoritmoBurbuja();
                 
         ordenacion.ordenacionBurbuja(ordenacion.lista1);
         
