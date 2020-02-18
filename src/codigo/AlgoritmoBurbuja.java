@@ -1,6 +1,7 @@
 package codigo;
 
 import java.util.Arrays;
+import java.util.Random;
 
 /**
  *
@@ -9,7 +10,7 @@ import java.util.Arrays;
 public class AlgoritmoBurbuja {
 
     
-    int [] lista1 = {13, 27, 455, 621, 23, 1, 15}; 
+    int [] lista; 
              
              
     public void ordenacionBurbuja(int[] numeros) {
@@ -34,12 +35,29 @@ public class AlgoritmoBurbuja {
     public static void main(String[] args) {
         
         AlgoritmoBurbuja ordenacion =new AlgoritmoBurbuja();
-                
-        ordenacion.ordenacionBurbuja(ordenacion.lista1);
         
-        System.out.println("Lista ordenada: " + Arrays.toString(ordenacion.lista1));
+        int rango=10000;//numero de numeros con los que probamos
+        int[] numeros=ordenacion.numerosRandom(rango);//generamos los numeros
         
+        ordenacion.lista=new int[rango];
         
+        for (int i = 0; i < rango; i++) {
+            ordenacion.lista[i]=numeros[i];
+        }
+        
+        long tiempoInicio=System.currentTimeMillis();
+        ordenacion.ordenacionBurbuja(ordenacion.lista);
+        long tiempoFinal=System.currentTimeMillis();
+        
+        System.out.println("Ha tardado: "+(tiempoFinal-tiempoInicio));
     }
-
+    
+    public int[] numerosRandom(int dimension){
+        int[] numeros=new int[dimension];
+        Random r=new Random();
+        for (int i = 0; i < dimension; i++) {
+            numeros[i]=r.nextInt();
+        }
+        return numeros;
+    }
 }

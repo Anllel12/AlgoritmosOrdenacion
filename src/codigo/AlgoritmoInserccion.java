@@ -6,6 +6,7 @@
 package codigo;
 
 import java.util.Arrays;
+import java.util.Random;
 
 /**
  *
@@ -13,14 +14,26 @@ import java.util.Arrays;
  */
 public class AlgoritmoInserccion {
     
-    int [] lista1 = {13, 27, 455, 621, 23, 1, 15}; 
+    int [] lista;
+    
     
     public static void main(String[] args) {
         AlgoritmoInserccion ordenacion =new AlgoritmoInserccion();
-                
-        ordenacion.insercionDirecta(ordenacion.lista1);
         
-        System.out.println("Lista ordenada: " + Arrays.toString(ordenacion.lista1));
+        int rango=100000;//numero de numeros con los que probamos
+        int[] numeros=ordenacion.numerosRandom(rango);//generamos los numeros
+        
+        ordenacion.lista=new int[rango];
+        
+        for (int i = 0; i < rango; i++) {
+            ordenacion.lista[i]=numeros[i];
+        }
+        
+        long tiempoInicio=System.currentTimeMillis();
+        ordenacion.insercionDirecta(ordenacion.lista);
+        long tiempoFinal=System.currentTimeMillis();
+        
+        System.out.println("Ha tardado: "+(tiempoFinal-tiempoInicio)/1000);
     }
     
     public void insercionDirecta(int[] numeros) {
@@ -36,6 +49,15 @@ public class AlgoritmoInserccion {
             numeros[j + 1] = aux;//coloca el valor comparado en su posición correspondiente
 
         }
+    }
+    
+    public int[] numerosRandom(int dimension){
+        int[] numeros=new int[dimension];
+        Random r=new Random();
+        for (int i = 0; i < dimension; i++) {
+            numeros[i]=r.nextInt();
+        }
+        return numeros;
     }
     
 }
